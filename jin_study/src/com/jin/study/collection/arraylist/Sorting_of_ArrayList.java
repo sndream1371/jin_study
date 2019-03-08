@@ -27,7 +27,7 @@ public class Sorting_of_ArrayList{
 	   listofcountries.add("2222");
 	   listofcountries.add("태국");
 	   listofcountries.add("가나");
-	   listofcountries.add("캐나다");
+	   listofcountries.add("캐나다333");
 	   
 	   /*Unsorted List*/
 	   System.out.println("Before Sorting:");
