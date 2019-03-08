@@ -11,8 +11,8 @@ public class Sorting_of_ArrayList{
 	   listofcountries.add("Denmark");
 	   listofcountries.add("한국");
 	   listofcountries.add("일본");
-	   listofcountries.add("미국33223");
-	   listofcountries.add("000111");
+	   listofcountries.add("미국");
+	   listofcountries.add("0001");
 	   listofcountries.add("001");
 	   listofcountries.add("000");
 	   listofcountries.add("0");
@@ -35,7 +35,6 @@ public class Sorting_of_ArrayList{
 			System.out.println(counter);
 		}
 
-	   
 	   /* Sort statement*/
 	   Collections.sort(listofcountries); //String정렬이 숫자 한글 영문이 섞이면 이상함.(실행화일참고)
 	   
