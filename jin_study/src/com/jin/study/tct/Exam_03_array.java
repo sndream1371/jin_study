@@ -32,7 +32,6 @@ public class Exam_03_array {
 		for (int i = 0; i < matrix.size(); i++) {
 		    int edgeCount = matrix.get(i).size();
 		    for (int j = 0; j < edgeCount; j++) {
-		        Integer startVertex = i;
 		        Integer endVertex = matrix.get(i).get(j);
 		        //System.out.printf("Vertex %d is connected to vertex %d%n", startVertex, endVertex);
 		        System.out.printf(i +" " + j+"=[%d] ", endVertex);

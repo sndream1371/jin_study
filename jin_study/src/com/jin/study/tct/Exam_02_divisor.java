@@ -33,7 +33,7 @@ public class Exam_02_divisor {
 		
 	}
 	
-	public static ArrayList divisor(int[] num) {
+	public static ArrayList<Integer> divisor(int[] num) {
 		
 		ArrayList<Integer> arrInt = new ArrayList<Integer>();
 		ArrayList<Integer> arrIntResult = new ArrayList<Integer>();

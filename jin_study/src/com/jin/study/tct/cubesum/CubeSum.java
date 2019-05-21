@@ -5,6 +5,8 @@ package com.jin.study.tct.cubesum;
  * 구글 검색 : java 2차원 배열 회전
  * 
  * N*N 정사각 큐브가 존재한다. 주어진 큐브를 시계방향으로 90도 회전하여 두개의 합을 구하는 프로그램을 작성한다.
+ * 
+ * cube sum
  */
 public class CubeSum {
 	

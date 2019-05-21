@@ -4,6 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/*
+ *
+ * 문자열 압축
+ *  
+ * 입력받은 문자열을 대문자를 소문자로 변환한다.
+ * 알파벳 순서대로 정렬하고 아파벳 다음 갯수를 입력한다.  ex) aaaACCCcbbbB - > a4b4c4
+ * 
+ *  
+ * 
+ */
 public class Exam_01 {
 
 	public static void main(String[] argv) {
@@ -15,14 +25,15 @@ public class Exam_01 {
 		char[] arrChar = null;
 		ArrayList<String> arrList = new ArrayList<String>();
 		
-		arrChar = msg.toCharArray();
+		arrChar = (msg.toLowerCase()).toCharArray();
 		
 		for(int i=0; i < arrChar.length; i++) {
 			System.out.println("array >"+arrChar[i]);
 			arrList.add(arrChar[i]+"");
 		}
 		
-		Collections.sort(arrList);
+		Collections.sort(arrList); //입력값 정렬 , 주석시 입력순서대로 문자열 압축해서 카운드, 주석해제시 전체문자열 sort해서 문자별로 카운트
+		
 		int cnt=0;
 		String display="", tempStr="";
 		
