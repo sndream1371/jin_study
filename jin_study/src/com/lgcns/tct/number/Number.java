@@ -16,7 +16,7 @@ public class Number {
 		char[] inputArr = inputData.toCharArray();
 		char[] tmpInputArr = inputData.toCharArray();
 		
-		Arrays.sort(inputArr);
+		Arrays.sort(inputArr); //오름차순 정렬(작은숫자부터 정렬)
 
 		char minCh = inputArr[0];
 		char maxCh = inputArr[inputArr.length-1];
@@ -39,9 +39,9 @@ public class Number {
 	public int getDifference(String removedStr, int digit) {
 		int difference = 0;
 		char[] removedArr = removedStr.toCharArray();
-		Arrays.sort(removedArr);
+		Arrays.sort(removedArr);  //오름차순 정렬(낮은숫자 부터)
 		
-		String str = String.valueOf(removedArr);
+		String str = String.valueOf(removedArr); //String로 형변환
 		int min = Integer.parseInt(str.substring(0, digit));
 
 		String maxStr = "";
@@ -49,7 +49,7 @@ public class Number {
 			maxStr += removedArr[i];
 		}
 		
-		int max = Integer.parseInt(maxStr);
+		int max = Integer.parseInt(maxStr);  //int로 형변환
 		
 		difference = max - min;
 		return difference;
