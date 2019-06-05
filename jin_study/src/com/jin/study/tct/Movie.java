@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.jin.study.tct.model.MovieInfo;
 
+
 public class Movie {
 
 	public static void main(String[] args) {
@@ -113,7 +114,7 @@ public class Movie {
 	public static List<MovieInfo> getShowingFrequency(List<MovieInfo> inputData){
 	
 		int startMin=0, hh=0, mm=0;
-		int oneDayMin = 24*60-1; //하루를 24시간을 분으로 (문제에서 23:59분가지 하루라고 정의해서 1분을뺌
+		int oneDayMin = 23*60 + 59; //하루를 24시간을 분으로 (문제에서 23:59분가지 하루라고 정의해서 11시 * 60분 + 59분
 		int movieCnt=0 , runTime=0, readyTime;
 		for(int i=0; i < inputData.size(); i++) {
 			//System.out.println("name :"+inputData.get(i).getMovieName());
@@ -123,12 +124,13 @@ public class Movie {
 			runTime=inputData.get(i).getMovieRunTime();
 			readyTime=inputData.get(i).getMovieReadyTime();
 			
+			System.out.println("a >"+(oneDayMin-startMin)+" b >"+ (runTime+readyTime) );
 			movieCnt = (oneDayMin-startMin)/(runTime+readyTime); //24시간(min) - 상영시작일 / 상영시간+상영대기시간
 			if((oneDayMin-startMin)%(runTime+readyTime) != 0 ) movieCnt++; //나머지가 나눠떨이지지 않으면 23:59분이네에 한번더 상영할수 있으므로 추가한다.
 			
 			//System.out.println("hh:"+hh+" mm:"+mm +" startMin:"+startMin+" movieCnt:"+movieCnt+" oneDayMin:"+oneDayMin +" runTime:"+runTime+" readyTime:"+readyTime);
 			
-			inputData.get(i).setMovieCount(movieCnt);
+			inputData.get(i).setMovieCount( movieCnt );
 		}
 		
 		return inputData;

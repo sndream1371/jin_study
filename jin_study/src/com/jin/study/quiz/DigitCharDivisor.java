@@ -1,12 +1,10 @@
 package com.jin.study.quiz;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class DigitCharDivisor {
 
 	/*
-	 * 문자와 숫자가섞인 문자열을 입력받을때 구별하여출력해라
+	 * 문자와 숫자가섞인 문자열을 입력받을때 구별하여 출력해라
 	input:"c910m6ia 1ho"
 	output:
 	str : cma ho

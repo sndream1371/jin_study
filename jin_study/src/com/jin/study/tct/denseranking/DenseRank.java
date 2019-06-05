@@ -17,7 +17,8 @@ public class DenseRank {
 
 	public static int[][] rank(int [][] input){
 		
-		int[][] temp = new int[8][3];
+		//System.out.println("input.length >"+input.length +" input[0].length >"+input[0].length);
+		int[][] temp = new int[input.length][input[0].length+1]; //행-열 순서
 		
 		System.out.println("--input-------------------");
 		printOut(input);
@@ -85,7 +86,7 @@ public class DenseRank {
 				}
 
 				return ret;
-            }
+            }               
         });
     }
 

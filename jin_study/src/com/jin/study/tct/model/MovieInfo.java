@@ -1,7 +1,7 @@
 package com.jin.study.tct.model;
 
 public class MovieInfo {
-	
+
 	private String movieName;
 	private String movieStartTime;
 	private int movieRunTime;
