@@ -11,6 +11,7 @@ import java.util.Scanner;
  * 입력값:4 / 결과: 420
  * 입력값:7 / 결과:1120
  * 
+ * 키워드 : 구구단 , 구구단합
  * 
  */
 public class SumOfGugudan {
