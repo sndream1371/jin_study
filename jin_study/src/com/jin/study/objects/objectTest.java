@@ -2,6 +2,10 @@ package com.jin.study.objects;
 
 import java.util.Objects;
 
+/*
+ * String Objects null üũ 
+ * 
+ */
 public class objectTest {
 
 	public static void main(String[] args) {
