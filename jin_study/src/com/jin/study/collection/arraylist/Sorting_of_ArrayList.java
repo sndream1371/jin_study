@@ -37,9 +37,9 @@ public class Sorting_of_ArrayList{
 		}
 
 	   /* Sort statement*/
-	   Collections.sort(listofcountries); //String정렬이 숫자 한글 영문이 섞이면 이상함.(실행화일참고)
+	   //Collections.sort(listofcountries); //String정렬이 숫자 한글 영문이 섞이면 이상함.(실행화일참고)
 	   
-	   //Collections.reverse(listofcountries); //역정렬이나 String경우 역정렬이 이상함. 실행결과 참고
+	   Collections.sort(listofcountries, new AscendingString()); //오름차순(큰수부터 작은수로 정렬)
 
 	   /* Sorted List*/
 	   //The output List will be sorted alphabetically.
@@ -47,5 +47,21 @@ public class Sorting_of_ArrayList{
 	   for(String counter: listofcountries){
 			System.out.println(counter);
 		}
+	}
+}
+
+//ArrayList로 내림차순(큰수부터 작은수로 정렬) Integer형을 정렬한다.
+class AscendingInteger implements Comparator<Integer> {
+	@Override
+	public int compare(Integer a, Integer b) {
+		return b.compareTo(a);
+	}
+}
+
+//ArrayList로 내림차순(큰수부터 작은수로 정렬) String형을 정렬한다.
+class AscendingString implements Comparator<String> {
+	@Override
+	public int compare(String a, String b) {
+		return b.compareTo(a);
 	}
 }
