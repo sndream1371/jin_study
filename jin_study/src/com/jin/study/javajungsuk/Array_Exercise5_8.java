@@ -12,17 +12,27 @@ package com.jin.study.javajungsuk;
  */
 class Array_Exercise5_8 {
 	public static void main(String[] args) {
-		int[] answer = { 1, 4, 4, 3, 1, 4, 4, 2, 1, 3, 2 };
-		int[] counter = new int[4];
-		for (int i = 0; i < answer.length; i++) { 
+		int[] answer = { 1, 4, 4, 3, 1, 4, 4, 2, 8, 10, 9 };
+		
+		for (int i = 0; i < answer.length; i++) {
 			/* 알맞은 코드를 넣어 완성하시오 /* (1) . */
-			System.out.print(answer[i]);
-			for (int j = 0; j < answer[i]; j++) {
-				/* 알맞은 코드를 넣어 완성하시오 (2) . */
-				System.out.print("*");
-			}
-			System.out.println();			
+			System.out.print(answer[i] + display(answer[i]));
 		}
 	
 	}
+
+	//파라미터로 받은 숫자 만큼 "*"를 표시한다. 
+	public static String display(int count) {
+		
+		String result="";
+		
+		for (int j = 0; j < count ; j++) {
+			/* 알맞은 코드를 넣어 완성하시오 (2) . */
+			result += "*";
+		}
+		result += "\n";
+		
+		return result;
+	}
+	
 }
