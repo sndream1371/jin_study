@@ -1,6 +1,5 @@
 package com.jin.study.tct.analyzer;
 
-import java.io.File;
 
 public class SourceAnalyzerRun {
 
