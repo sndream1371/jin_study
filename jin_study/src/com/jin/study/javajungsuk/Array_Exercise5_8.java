@@ -18,7 +18,6 @@ class Array_Exercise5_8 {
 			/* 알맞은 코드를 넣어 완성하시오 /* (1) . */
 			System.out.print(answer[i] + display(answer[i]));
 		}
-	
 	}
 
 	//파라미터로 받은 숫자 만큼 "*"를 표시한다. 
