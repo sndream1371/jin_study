@@ -4,7 +4,8 @@ package com.jin.study.quiz;
 public class DigitCharDivisor {
 
 	/*
-	 * 문자와 숫자가섞인 문자열을 입력받을때 구별하여 출력해라
+	 * 문자열을 입력받고 숫자와 문자를 구별하여 출력
+	 * 
 	input:"c910m6ia 1ho"
 	output:
 	str : cma ho
@@ -19,7 +20,7 @@ public class DigitCharDivisor {
 //		System.out.println("Input message >"+msg);
 		
 		String msg ="c910m6ia 1ho";
-		System.out.println("input:"+msg);
+		System.out.println("input data:"+msg);
 		
 		char[] arrChar = msg.toCharArray();
 		String Str="",Int="";
