@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*
  * 구구단의 합
- * 단, 동일단수는 덧샘에서 제외한다.
+ * 단, 동일 단수는 덧샘에서 제외한다.
  * 
  * [실행예시]
  * 입력값:1 / 결과 : 44
@@ -31,6 +31,7 @@ public class SumOfGugudan {
 		for(int k=1; k <= input ; k++) {
 			for(int i=1; i <= 9; i++) {
 				if( k != i) { //1*1, 2*2, 3*3동일한 단수는 제외
+					System.out.println(k +" * "+ i+" = "+ k*i);
 					sum += (k * i);
 				}
 				//System.out.println(k +" * "+ i+" = "+ k*i);
