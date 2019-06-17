@@ -1,6 +1,7 @@
 package com.jin.study.javajungsuk;
 
 /*
+ * 이스턴스 메서드: 인스턴스 메서드의 경우는 참조변수의 타입에 관계없이 항상 실제 인스턴스의 메서드가 호출 
  * 
 p.x = 100
 Child Method..
