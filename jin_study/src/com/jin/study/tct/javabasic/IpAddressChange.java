@@ -22,6 +22,7 @@ public class IpAddressChange {
 
 		String binary = "11001011100001001110010110000000";
 		System.out.println(chageDecimal(binary));
+		
 	}
 	
 	public static String chageDecimal(String input) {
