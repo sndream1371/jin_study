@@ -2,7 +2,9 @@ package com.jin.study.javajungsuk;
 
 
 /*
- * 주어진 차원 배열의 데이터보다 가로와 세로로 이 더 큰 배열을 생성해서 배열 2 1 의 행과 열의 마지막 요소에 각 열과 행의 총합을 저장하고 출력하는 프로그램이다. (1) 에 알맞은 코드를 넣어서 완성하시오
+ * 주어진 차원 배열의 데이터보다 가로와 세로로 이 더 큰 배열을 생성해서 배열의
+ * 
+ * 행과 열의 마지막 요소에 각 열과 행의 총합을 저장하고 출력하는 프로그램이다. 
  * 
  * [실행결과]
  * 100 100 100 300 
@@ -22,8 +24,9 @@ class Array_Exercise5_11 {
 				           { 50,  50,  50 } 
 				         }; //5*3 행렬 -> 6*4 행렬
 		
-		int[][] result = new int[score.length + 1][score[0].length + 1];
+		int[][] result = new int[score.length + 1][score[0].length + 1]; //[행][열]
 		System.out.println("score.length + 1 > "+(score.length+1) +" score[0].length + 1 >"+ (score[0].length + 1) );
+		
 		for (int i = 0; i < score.length; i++) {
 			for (int j = 0; j < score[i].length; j++) {
 				/* 알맞은 코드를 넣어 완성하시오 (1) . */
@@ -36,6 +39,8 @@ class Array_Exercise5_11 {
 			
 		}
 		
+		
+		//출력하기
 		for (int i = 0; i < result.length; i++) {
 			for (int j = 0; j < result[i].length; j++) {
 				System.out.printf("%4d", result[i][j]);
