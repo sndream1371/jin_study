@@ -12,13 +12,58 @@ import java.util.Comparator;
  *  * 해결방법 : 2차원 array를 sort를 구현함
  * 
  * 동시 2개의 정렬을 해야하는데 구현을 못함(하나씩만 정렬함)
- */
+ * 
+ * 결과
+ * 
+ * --input-------------------
+
+ 10210    80
+ 10211    77
+ 10212    55
+ 10213    66
+ 10214    77
+ 10213    77
+ 10212    77
+ 10215    99
+ 10216    30
+ 10217    10
+--점수로 정렬후 result-------------------
+
+ 10215    99
+ 10210    80
+ 10211    77
+ 10212    77
+ 10213    77
+ 10214    77
+ 10213    66
+ 10212    55
+ 10216    30
+ 10217    10
+--랭킹 추가후 정렬 result-------------------
+
+ 10215    99     1
+ 10210    80     2
+ 10211    77     3
+ 10212    77     3
+ 10213    77     3
+ 10214    77     3
+ 10213    66     4
+ 10212    55     5
+ 10216    30     6
+ 10217    10     7
+ 
+ 
+*
+*
+*
+*
+*/
 public class DenseRank {
 
 	public static int[][] rank(int [][] input){
 		
 		//System.out.println("input.length >"+input.length +" input[0].length >"+input[0].length);
-		int[][] temp = new int[input.length][input[0].length+1]; //행-열 순서
+		int[][] temp = new int[input.length][input[0].length+1]; //행-열 순서 (랭크를 추가하기 위해서 +1을 함)
 		
 		System.out.println("--input-------------------");
 		printOut(input);

@@ -33,7 +33,7 @@ public class Movie {
 			int startTimeMin = changeTimetoMin(startTime);
 			double validRange = maxMin - startTimeMin;
 			double totalTime = data.getShowtimes() + data.getScreeningWaitTime();
-			
+			System.out.println("validRange > "+validRange+ " totalTime"+totalTime);
 			data.setShowingFrequency((int)Math.ceil(validRange/totalTime));
 		}
 		

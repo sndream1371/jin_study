@@ -29,29 +29,29 @@ public class MovieRun {
 		// 제공 데이터 세트 1
 		/////////////////////////////////
   
-    	List<MovieInfo> inputData = Arrays.asList(
-    			new MovieInfo("believer", "08:25", 96, 24),
-    			new MovieInfo("detective", "09:00", 116, 24),
-    			new MovieInfo("hereditary", "10:10", 127, 23),
-    			new MovieInfo("burning", "08:15", 148, 22),
-    			new MovieInfo("welcome", "09:40", 94, 16)
-		);
-    	
-    	time = "22:24";
+//    	List<MovieInfo> inputData = Arrays.asList(
+//    			new MovieInfo("believer", "08:25", 96, 24),
+//    			new MovieInfo("detective", "09:00", 116, 24),
+//    			new MovieInfo("hereditary", "10:10", 127, 23),
+//    			new MovieInfo("burning", "08:15", 148, 22),
+//    			new MovieInfo("welcome", "09:40", 94, 16)
+//		);
+//    	
+//    	time = "22:24";
     	
 		//////////////////////////////////
 		// 제공 데이터 세트 2
 		/////////////////////////////////    
     	
-//    	List<MovieInfo> inputData = Arrays.asList(
-//    			new MovieInfo("hereditary", "09:00", 120, 25),
-//    			new MovieInfo("welcome", "11:10", 94, 16),
-//    			new MovieInfo("detective", "09:00", 115, 25),
-//    			new MovieInfo("believer", "10:30", 95, 20),
-//    			new MovieInfo("burning", "08:40", 140, 30)
-//		);
-//		
-//		time = "11:15";
+    	List<MovieInfo> inputData = Arrays.asList(
+    			new MovieInfo("hereditary", "09:00", 120, 25),
+    			new MovieInfo("welcome", "11:10", 94, 16),
+    			new MovieInfo("detective", "09:00", 115, 25),
+    			new MovieInfo("believer", "10:30", 95, 20),
+    			new MovieInfo("burning", "08:40", 140, 30)
+		);
+		
+		time = "11:15";
     	
     	return inputData;
 	}    
