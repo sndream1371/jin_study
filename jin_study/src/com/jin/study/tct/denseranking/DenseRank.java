@@ -4,14 +4,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /*
- * 학생정보에서 점수가 높음 순서대로 랭킹을 구하는 프로그램
+ * 학생 정보에서 점수가 높음 순서대로 랭킹을 구하는 프로그램
  * 
  * 점수가 높은 순서대로 랭킹을 구한다.(동점일 경우 그다음 순위는 누락되지 않는다.)
  * 동일한 랭킹 내에서는 학번의 오름차순으로 출력
  * 
- *  * 해결방법 : 2차원 array를 sort를 구현함
+ * 해결방법 : 2차원 array를 sort를 구현함
  * 
- * 동시 2개의 정렬을 해야하는데 구현을 못함(하나씩만 정렬함)
+ * 동시 2개의 정렬
  * 
  * 결과
  * 
@@ -51,12 +51,7 @@ import java.util.Comparator;
  10212    55     5
  10216    30     6
  10217    10     7
- 
- 
-*
-*
-*
-*
+
 */
 public class DenseRank {
 
@@ -73,18 +68,20 @@ public class DenseRank {
 		printOut(input);
 		
 		//랭킹 추가
-		int i=1;
+		int rank=1;
 		for(int row=0; row < input.length; row++){
+			
 			temp[row][0] = input[row][0]; //학번
 			temp[row][1] = input[row][1]; //점수
+			
 			if(row+1 < input.length) { // row+1을 해서 해당 범위내에서만 처리하기위함
 				if(input[row][1] == input[row+1][1]){
-					temp[row][2] = i;
+					temp[row][2] = rank;
 				}else {
-					temp[row][2] = i++;
+					temp[row][2] = rank++;
 				}
 			}else {
-				temp[row][2] = i++;;
+				temp[row][2] = rank++;
 			}
 		}
 		
