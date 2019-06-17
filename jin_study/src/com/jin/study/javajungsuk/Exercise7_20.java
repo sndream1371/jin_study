@@ -13,7 +13,7 @@ class Exercise7_20 {
 		Parent20 p = new Child20();
 		Child20 c = new Child20();
 		System.out.println("p.x = " + p.x); //부모의 멤버변수가 실행됨
-		p.method(); //자식의 메소드가 실행됨 (좀 이해안됨)
+		p.method(); //자식의 메소드가 실행됨 (좀 이해안됨) call by reference
 		System.out.println("c.x = " + c.x);
 		c.method();
 	}
