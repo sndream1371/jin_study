@@ -3,7 +3,11 @@ package com.lgcns.tct.account;
 import java.util.Arrays;
 import java.util.List;
 
-
+/*
+ * 계좌
+ * 입력으로 제공되는 데이터를 이용해 휴면 계좌 잔액의 합을 계산하는 프로그램을 작성하시오. 
+ * 
+ */
 public class AccountRun {
 	
 	public static String name;

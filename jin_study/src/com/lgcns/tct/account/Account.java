@@ -1,6 +1,5 @@
 package com.lgcns.tct.account;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Account {	
@@ -18,7 +17,7 @@ public class Account {
 		for(AccountInfo data : inputData){
 			String account_name = data.getName();
 			if(account_name.equals(name)){
-				totalBalance = totalBalance+ data.getBalance();
+				totalBalance = totalBalance + data.getBalance();
 			}
 		}
 		///////////////////////////// <-------------- 여기까지 구현 (1)
