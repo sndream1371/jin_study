@@ -14,7 +14,7 @@ public class Number {
 	public String getRemovedStr(String inputData) {
 		String removedStr = "";
 		char[] inputArr = inputData.toCharArray();
-		char[] tmpInputArr = inputData.toCharArray();
+		char[] tmpInputArr = inputData.toCharArray(); 
 		
 		Arrays.sort(inputArr); //오름차순 정렬(작은숫자부터 정렬)
 
