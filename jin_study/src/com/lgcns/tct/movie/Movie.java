@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Movie {
 	
-	
 	public int changeTimetoMin(String time){
 		int min = 0;
 		
@@ -31,10 +30,10 @@ public class Movie {
 		for(MovieInfo data : inputData){
 			String startTime = data.getFirstScreeningTime();
 			int startTimeMin = changeTimetoMin(startTime);
-			double validRange = maxMin - startTimeMin;
-			double totalTime = data.getShowtimes() + data.getScreeningWaitTime();
+			double validRange = maxMin - startTimeMin; //상영 가능 시간
+			double totalTime = data.getShowtimes() + data.getScreeningWaitTime(); //상영시간(분) + 사영대기시간(분)
 			System.out.println("validRange > "+validRange+ " totalTime"+totalTime);
-			data.setShowingFrequency((int)Math.ceil(validRange/totalTime));
+			data.setShowingFrequency((int)Math.ceil(validRange/totalTime)); //Math.floor() : 소수점 이하를 버림한다. Math.ceil() : 소수점 이하를 올림한다. Math.round() : 소수점 이하를 반올림한다.
 		}
 		
 		showingFrequency = inputData;
@@ -52,14 +51,17 @@ public class Movie {
 	 */
 	public List<String> getPendingMovieList(List<MovieInfo> inputData, String time) {
 		List<String> pendingMovieList = null;
+		
 		////////////////////////여기부터 구현 (2) ---------------->
 		pendingMovieList = new ArrayList<>();
 		int currentMin = changeTimetoMin(time);
+		
 		for (MovieInfo data : inputData){
 			String startTime = data.getFirstScreeningTime();
 			int startTimeMin = changeTimetoMin(startTime);
 			int totalTime = data.getShowtimes() + data.getScreeningWaitTime();
 			int testTime = startTimeMin;
+			
 			while(testTime < 23*60+59){
 				if(testTime < currentMin){
 					if((testTime + data.getShowtimes()) <= currentMin &&  (testTime + data.getShowtimes() + data.getScreeningWaitTime()) > currentMin){

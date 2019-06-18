@@ -3,6 +3,12 @@ package com.lgcns.tct.movie;
 import java.util.Arrays;
 import java.util.List;
 
+
+/*
+ * 영화
+ * 멀티플렉스 영화관의 영화 상영 정보를 이용하여 총 상영횟수와 특정시각에 관람 가능한 영화를 검색하는 프로그램을 작성하시오
+ * 
+ */
 public class MovieRun {
 
 	public static String time;
