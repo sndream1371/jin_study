@@ -104,7 +104,7 @@ public class Number {
 		 
 			char[] arrChar = null;
 			
-			arrChar = inputData.toCharArray();
+			arrChar = inputData.toCharArray(); //String to array
 			Arrays.sort(arrChar); //오름차순 
 			
 			String minV="";
