@@ -3,7 +3,9 @@ package com.lgcns.tct.analysis;
 import java.util.Arrays;
 import java.util.List;
 
-
+/*
+ * 목록으로 제공되는 상품판매정보 목록을 이용하여 주문취소나 교환이 가장 많은 회원과 상품을 검색하는 프로그램을 작성하시오
+ */
 public class AnalysisRun {
 	
     public static void main(String[] args) {    	
