@@ -1,13 +1,11 @@
 package com.jin.study.tct;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 
 /*
- * 
- * 
+ * 가장 큰 숫자와 가장 작은 숫자를 제거한 숫자열
+ * 가장 큰 수와 가장 작은 수의 차
  */
 public class Number {
 	
@@ -40,7 +38,7 @@ public class Number {
 		 int intNum , minNum=10, maxNum=0;
 		 
 		 for(int i=0; i < inputData.length(); i++) {
-			 intNum = Integer.parseInt(inputData.charAt(i)+"");
+			 intNum = Integer.parseInt( String.valueOf(inputData.charAt(i)) );  //Char to String = String.valueOf()
 			 if(intNum > maxNum) {
 				 maxNum = intNum;
 			 }
@@ -51,8 +49,8 @@ public class Number {
 		 }
 		 System.out.println("min :"+minNum+" max :"+maxNum);
 		 
-		 inputData = inputData.replaceAll(maxNum+"", "");
-		 inputData = inputData.replaceAll(minNum+"", "");
+		 inputData = inputData.replaceAll( String.valueOf(maxNum), "");
+		 inputData = inputData.replaceAll( String.valueOf(minNum), "");
 		 
 		 return inputData;
 	 }
@@ -102,11 +100,11 @@ public class Number {
 	  * 리턴: int  가장 큰 수와 가장 작은 수의 차
 	  * 
 	  */
-	 public static int getDifference_otherSolve(String removedStr, int digit) {
+	 public static int getDifference_otherSolve(String inputData, int digit) {
 		 
 			char[] arrChar = null;
 			
-			arrChar = removedStr.toCharArray();
+			arrChar = inputData.toCharArray();
 			Arrays.sort(arrChar); //오름차순 
 			
 			String minV="";
