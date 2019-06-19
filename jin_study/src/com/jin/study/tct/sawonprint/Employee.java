@@ -2,7 +2,6 @@ package com.jin.study.tct.sawonprint;
 
 import java.util.Arrays;
 import java.util.Comparator;
-
 /*
  * 사원정보 출력
  * 주어진 정보를 이용하여 사원정보를 출력하는 프로그램
