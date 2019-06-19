@@ -30,7 +30,6 @@ package com.jin.study.tct.cubesum;
   8  6 14
   
  *
- *
  */
 public class CubeSum {
 	
