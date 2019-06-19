@@ -53,6 +53,7 @@ import java.util.Comparator;
  10217    10     7
 
 */
+
 public class DenseRank {
 
 	public static int[][] rank(int [][] input){
