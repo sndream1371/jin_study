@@ -43,10 +43,10 @@ public class Employee {
 		
 		String[][] result = new String[4][4]; //[행 row][열 col]
 		
-		System.out.println("--department-------------------");
+		System.out.println("--department--------------------");
 		printOut(department);
 		
-		System.out.println("--employee-------------------"+ employee.length);
+		System.out.println("--employee--------------------"+ employee.length);
 		printOut(employee);
 
 		//정보정렬
