@@ -2,15 +2,19 @@ package com.jin.study.tct;
 
 import java.util.ArrayList;
 
+
+/*
+ * 문자열 a123adfa67ad786a7df67a6df87a6d87f6a78676786 를입력 받음
+ * 
+ * 3-1 : 문자열 중에서 숫자만 남길것
+ * 숫자 최대 길이를 넘지 않는 N *N  LIST 만들것 
+ * 길이 초과된 숫자는 필요 없음
+ * 
+ * 3-2. 위 만들어진 배열에서 같은 숫자끼리 붙어 있으면 0으로 치환 할것 		
+ */
 public class Exam_03_array {
 
 	public static void main(String[] argv) {
-		//문자열 a123adfa67ad786a7df67a6df87a6d87f6a78676786 를입력 받음
-		// 3-1 : 문자열 중에서 숫자만 남길것
-        //숫자 최대 길이를 넘지 않는 N *N  LIST 만들것 
-        //길이 초과된 숫자는 필요 없음
-        //3-2. 위 만들어진 배열에서 같은 숫자끼리 붙어 있으면 0으로 치환 할것
-		
 		
 		String strSample="a122adfa67ad786a7df67a6df87a6d87f6a78676786";
 		
