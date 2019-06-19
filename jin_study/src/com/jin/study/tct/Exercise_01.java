@@ -1,9 +1,5 @@
 package com.jin.study.tct;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-
 /*
  * 이번 연습 문제에서는 1~1000까지 369 게임 시 박수를 몇 번 치게 되는지 계산하는 프로그램을 작성한다.
 ※ 369 게임이란? 
