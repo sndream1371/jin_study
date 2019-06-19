@@ -49,12 +49,15 @@ public class Exercise_02 {
 
 	//은행별 휴면계좌의 잔액 합이 가장 큰 은행의 이름을 검색
 	public static String bankAccountSum() {
-		List<String> list = fileReader();
+		List<String> list = fileReader(); //파일에서 정보를 읽어온다.
 		String [] arrAcc= null;
 		HashMap<String, Integer> sum = new HashMap<String,Integer>();
 		int sum1=0,sum2=0,sum3=0;
-		for(String obj : list) {
-			arrAcc = obj.split("\\t");
+
+		for(String data : list) {
+			
+			arrAcc = data.split("\\t");
+			
 			if(arrAcc != null) {
 				if("A".equals(arrAcc[2])) sum.put(arrAcc[2], sum1 += Integer.parseInt(arrAcc[3]));
 				else if("B".equals(arrAcc[2])) sum.put(arrAcc[2], sum2 += Integer.parseInt(arrAcc[3]));
