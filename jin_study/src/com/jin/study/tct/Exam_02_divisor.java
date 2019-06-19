@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+
+/*
+ * 약수 구하기
+ * 
+ * 입력한 값의 약수를 계산하여 ArrayList로 반환한다.
+ */
 public class Exam_02_divisor {
 
 	public static void main(String[] argv) {
