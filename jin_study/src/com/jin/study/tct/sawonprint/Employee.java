@@ -13,8 +13,6 @@ import java.util.Comparator;
  * 
  * 해결방법 : 2차원 array를 sort를 구현함
  * 
- * 동시 2개의 정렬을 해야하는데 구현을 못함(하나씩만 정렬함)
- * 
 [출력결과]
 --department-------------------
     10   영업팀
