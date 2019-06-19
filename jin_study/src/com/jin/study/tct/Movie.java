@@ -138,7 +138,6 @@ public class Movie {
 	
 	
 	
-	
 	/*
 	 * 구현 : 입력한 시각에 상영대기 중인 영화목록을 검색하는 기능 . 
 	 * 매개변수: List<MovieInfo> inputData 
