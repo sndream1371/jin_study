@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 문자열 압축
  *  
  * 입력받은 문자열을 대문자를 소문자로 변환한다.
- * 알파벳 순서대로 정렬하고 아파벳 다음 갯수를 입력한다.  ex) aaaACCCcbbbB - > a4b4c4
+ * 알파벳 순서대로 정렬하고 알파벳 다음 갯수를 입력한다.  ex) aaaACCCcbbbB - > a4b4c4
  * 
  */
 public class Exam_01 {
@@ -24,7 +24,7 @@ public class Exam_01 {
 		char[] arrChar = null;
 		ArrayList<String> arrList = new ArrayList<String>();
 		
-		arrChar = (msg.toLowerCase()).toCharArray();
+		arrChar = (msg.toLowerCase()).toCharArray();  //소문자로 변환후 array로 입력함
 		
 		for(int i=0; i < arrChar.length; i++) {
 			//System.out.println("array >"+arrChar[i]);
