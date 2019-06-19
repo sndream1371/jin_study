@@ -36,6 +36,7 @@ public class NumberRun {
     	return inputData;
 	}
     
+    
     private static void printRemovedStr(String inputData, String removedStr) {   
     	System.out.println("[가장 큰 숫자와 가장 작은 숫자를 제거한 숫자열] ");
     	System.out.println("[입력]: "+inputData);
