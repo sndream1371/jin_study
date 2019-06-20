@@ -105,7 +105,7 @@ public class DenseRank {
 		}
 	}
 	
-    //점수, 학번 순으로 정렬
+    //점수, 학번 순으로 정렬 
     public static void sortArrayPoint(int[][] arr)
     {
         Arrays.sort(arr, new Comparator<int[]>() {
