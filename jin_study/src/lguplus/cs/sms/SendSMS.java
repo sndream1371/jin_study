@@ -31,7 +31,7 @@ public class SendSMS {
 		FileHandler fileHandler = new FileHandler("D:/sender_list.txt"); //무명인,010022879727,HS_30 형태
 		senderList = fileHandler.fileReader();
 		
-		bizGubun = "BS"; //"HS_30"; //for test 실제 스케쥴 적용시는 생성자를 이용한다.
+		bizGubun = "USHOP";  //for test 실제 스케쥴 적용시는 생성자를 이용한다. //전송 구분 코드: HS_30, PM, TRN, USHOP, BS
 				
 		smsUserList(senderList, bizGubun);
 				
@@ -54,6 +54,7 @@ public class SendSMS {
 			
 			System.out.println("[이름]"+ senderInfo[0]+" [Mobile]"+senderInfo[1] +" [전송타입]"+senderInfo[2]);
 			
+			String senderTelNum = senderInfo[1]; //SMS 보낼사람의 모바일 전화번호(12자리)
 			String sendType = ( !"".equals(senderInfo[2]) ? senderInfo[2].toUpperCase() : senderInfo[2] ); //전송타입이 null이 아니면 대문자로 전환
 			
 			if( !sendType.equals(gubun.toUpperCase()) ) { //파일에 읽어들어 송신구분과 생성자에서 설정한 송신구분이 같을 경우만 다음로직 처리
@@ -62,27 +63,38 @@ public class SendSMS {
 			}
 
 			SMSContentInfo conInfo = new SMSContentInfo();
+			SMSInsertInfo insertInfo = new SMSInsertInfo();
+			String smsMessage = "";
 			
 			switch(sendType) {
 				case "PM": 
 							System.out.println("PM 통계정보 조회 , SMS전송 테이블 Insert");
+							smsMessage = conInfo.staticMobilePM() + conInfo.staticMobilePMAgency() + conInfo.staticHomeBS();
+//							insertInfo.insertMMSTable(senderTelNum, smsMessage, sendType); //장문 MMS
 							break;
 				
 				case "BS": 
-							conInfo.staticHomeBS();
 							System.out.println("BS 통계정보 조회 , SMS전송 테이블 Insert");
+							smsMessage = conInfo.staticHomeBS();
+//							insertInfo.insertMMSTable(senderTelNum, smsMessage, sendType); //장문 MMS
 							break;
 				
 				case "TRN": 
 							System.out.println("TRN 통계정보 조회 , SMS전송 테이블 Insert");
+							smsMessage = conInfo.staticMobileTRN();
+//							insertInfo.insertSMSTable(senderTelNum, smsMessage, sendType);  //단문 SMS
 							break;
 				
 				case "USHOP":
 							System.out.println("USHOP 통계정보 조회 , SMS전송 테이블 Insert");
+							smsMessage = conInfo.staticHomeUSHOP();
+//							insertInfo.insertSMSTable(senderTelNum, smsMessage, sendType); //단문 SMS
 							break;
 				
 				case "HS_30":
 							System.out.println("HS_30 통계정보 조회 , SMS전송 테이블 Insert");
+							smsMessage = conInfo.staticHomeHS30();
+//							insertInfo.insertMMSTable(senderTelNum, smsMessage, sendType); //장문 MMS
 							break;
 				
 				default: 

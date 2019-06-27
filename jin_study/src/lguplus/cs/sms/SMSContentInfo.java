@@ -74,8 +74,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("SMS send content");
-            System.out.println("============================================");
+//            System.out.println("HOME BS send content");
+//            System.out.println("============================================");
             
             while(rs.next()){
             	result = rs.getString(1); //1부터 시작
@@ -122,8 +122,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("Mobile TRN send content");
-            System.out.println("============================================");
+//            System.out.println("Mobile TRN send content");
+//            System.out.println("============================================");
             
             while(rs.next()){
             	result = rs.getString(1); //1부터 시작
@@ -169,8 +169,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("U+SHOP send content");
-            System.out.println("============================================");
+//            System.out.println("U+SHOP send content");
+//            System.out.println("============================================");
             
             while(rs.next()){
             	result = rs.getString(1); //1부터 시작
@@ -268,8 +268,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("Mobile PM send content");
-            System.out.println("============================================");
+//            System.out.println("Mobile PM send content");
+//            System.out.println("============================================");
             
             while(rs.next()){
             	result = rs.getString(1); //1부터 시작
@@ -314,8 +314,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("Mobile PM send content");
-            System.out.println("============================================");
+//            System.out.println("Mobile PM Agency send content");
+//            System.out.println("============================================");
             
             while(rs.next()){
             	result = rs.getString(1); //1부터 시작
@@ -361,8 +361,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("HS send content");
-            System.out.println("============================================");
+//            System.out.println("HS send content");
+//            System.out.println("============================================");
             
             while(rs.next()){
             	result = rs.getString(1); //1부터 시작
