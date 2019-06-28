@@ -102,7 +102,7 @@ public class SendSMS {
 								System.out.println("BS 통계정보 조회 , SMS전송 테이블 Insert");
 								smsMessage = conInfo.staticHomeBS(connHome);
 								//System.out.println("SMS MSG :"+smsMessage);
-								insertInfo.insertMMSTable(senderTelNum, smsMessage, sendType, connHome); //장문 MMS
+//								insertInfo.insertMMSTable(senderTelNum, smsMessage, sendType, connHome); //장문 MMS
 								break;
 					
 					case "TRN": 
@@ -114,13 +114,13 @@ public class SendSMS {
 					case "USHOP":
 								System.out.println("USHOP 통계정보 조회 , SMS전송 테이블 Insert");
 								smsMessage = conInfo.staticHomeUSHOP(connHome);
-								insertInfo.insertSMSTable(senderTelNum, smsMessage, sendType, connHome); //단문 SMS
+//								insertInfo.insertSMSTable(senderTelNum, smsMessage, sendType, connHome); //단문 SMS
 								break;
 					
 					case "HS_30":
 								System.out.println("HS_30 통계정보 조회 , SMS전송 테이블 Insert");
 								smsMessage = conInfo.staticHomeHS30(connHome);
-								insertInfo.insertMMSTable(senderTelNum, smsMessage, sendType, connHome); //장문 MMS
+//								insertInfo.insertMMSTable(senderTelNum, smsMessage, sendType, connHome); //장문 MMS
 								break;
 					
 					case "ALL":
