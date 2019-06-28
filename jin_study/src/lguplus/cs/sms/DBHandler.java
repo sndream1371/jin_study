@@ -6,19 +6,59 @@ import java.sql.SQLException;
 
 public class DBHandler {
 	
-	public Connection dbConn;
-    
-    public Connection getConnectionCubeSeoul()
+	public Connection homeSeoulDBConn;
+	public Connection mobileBusanDBConn;
+	public Connection homeSeoulDBClose;
+	public Connection mobileBusanDBlose;
+
+	
+	public Connection getHomeSeoulDBConn() {
+		this.homeSeoulDBConn = getConnectionCubeSeoul();
+		return homeSeoulDBConn;
+	}
+
+	public Connection getMobileBusanDBConn() {
+		this.mobileBusanDBConn = getConnectionCubePusan();
+		return mobileBusanDBConn;
+	}
+
+	public Connection getHomeSeoulDBClose() {
+		return homeSeoulDBClose;
+	}
+
+
+	public void setHomeSeoulDBClose() {
+		try {
+			homeSeoulDBConn.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+	}
+
+
+	public Connection getMobileBusanDBlose() {
+		return mobileBusanDBlose;
+	}
+
+
+	public void setMobileBusanDBlose() {
+		try {
+			mobileBusanDBlose.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+
+
+	//홈 서울센터
+	public Connection getConnectionCubeSeoul()
     {
         Connection conn = null;
         try {
         	
-        	//VB설정정보
-//            '연결 문자열을 작성한다.
-//            strCnn = "Provider=MSDAORA.1;" & _
-//                     "User ID=CTIAPP;password=hdbcti1$;" & _
-//                     "Data Source=PUCTIHO;" '& _
-                     
             String user = "CTIAPP"; 
             String pw = "hdbcti1$";
             //String url = "jdbc:oracle:thin:@localhost:1521:orcl";
@@ -41,16 +81,12 @@ public class DBHandler {
     }
 
     
+	//모바일 부산
     public Connection getConnectionCubePusan()
     {
         Connection conn = null;
         try {
         	
-        	//VB설정정보
-//            strCnn = "Provider=MSDAORA.1;" & _
-//                    "User ID=CTIAPP;password=mdbcti1$;" & _
-//                    "Data Source=PUCTIMO;" '& _
-                     
             String user = "CTIAPP"; 
             String pw = "mdbcti1$";
             //String url = "jdbc:oracle:thin:@localhost:1521:orcl";

@@ -13,6 +13,7 @@ public class SMSContentSQL {
 //	String sql_USHOP  = null; //홈 U+ Shop
 //	String sql_HS_30  = null; //HS_30분 수신인용(이범영)
 
+	
             
 	//모바일 응대율
 	String sql_PM_PM =

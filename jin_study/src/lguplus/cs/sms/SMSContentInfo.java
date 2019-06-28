@@ -29,13 +29,13 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("cnt");
+            System.out.println("공휴일 조회...");
             System.out.println("============================================");
             
             while(rs.next()){
                 cnt = rs.getBoolean(1); //1부터 시작
-                System.out.println(cnt);
             }
+            System.out.println(cnt);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -57,20 +57,19 @@ public class SMSContentInfo {
 	}
 	
 	//BS 응대율 통계조회
-	public String staticHomeBS() {
+	public String staticHomeBS(Connection conn) {
 		
 		String result = "";
 		SMSContentSQL contentSQL = new SMSContentSQL();
 		String sql = contentSQL.sql_BS;
 		
-		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+		//Connection conn = null; // DB연결된 상태(세션)을 담은 객체
         PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
         ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
         
         try {
-            DBHandler dbHandler = new DBHandler();
-        	
-            conn = dbHandler.getConnectionCubeSeoul();
+           // DBHandler dbHandler = new DBHandler();
+           //conn = dbHandler.getConnectionCubeSeoul();
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
@@ -78,9 +77,9 @@ public class SMSContentInfo {
 //            System.out.println("============================================");
             
             while(rs.next()){
-            	result = rs.getString(1); //1부터 시작
-                System.out.println(result);
+            	result += rs.getString(1); //1부터 시작
             }
+            System.out.println(result);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -90,8 +89,8 @@ public class SMSContentInfo {
             try{
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
-                if ( conn != null ){conn.close(); }
-                System.out.println("DB 연결을 종료하였습니다.");
+                //if ( conn != null ){conn.close(); }
+                System.out.println("prepareStatement 정보 반납 하였습니다.");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -104,21 +103,20 @@ public class SMSContentInfo {
 	
 	//모바일 모전담 이관 조회 
 	//모바일 -> 부산DB 접속
-	public String staticMobileTRN() {
+	public String staticMobileTRN(Connection conn) {
 		
 		String result = "", sql = "";
 		
 		SMSContentSQL contentSQL = new SMSContentSQL();
 		sql = contentSQL.sql_PM_TRN;
 		
-		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+//		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
         PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
         ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
         
         try {
-            DBHandler dbHandler = new DBHandler();
-        	
-            conn = dbHandler.getConnectionCubePusan(); //모바일은 부산DB 조회
+//            DBHandler dbHandler = new DBHandler();
+//            conn = dbHandler.getConnectionCubePusan(); //모바일은 부산DB 조회
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
@@ -126,9 +124,9 @@ public class SMSContentInfo {
 //            System.out.println("============================================");
             
             while(rs.next()){
-            	result = rs.getString(1); //1부터 시작
-                System.out.println(result);
+            	result += rs.getString(1); //1부터 시작
             }
+            System.out.println(result);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -138,8 +136,8 @@ public class SMSContentInfo {
             try{
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
-                if ( conn != null ){conn.close(); }
-                System.out.println("DB 연결을 종료하였습니다.");
+//                if ( conn != null ){conn.close(); }
+                System.out.println("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -151,21 +149,20 @@ public class SMSContentInfo {
 	
 	//HOME U+ SHOP 
 	//HOME -> 서울DB 접속
-	public String staticHomeUSHOP() {
+	public String staticHomeUSHOP(Connection conn) {
 		
 		String result = "", sql = "";
 		
 		SMSContentSQL contentSQL = new SMSContentSQL();
 		sql = contentSQL.sql_USHOP;
 		
-		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+//		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
         PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
         ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
         
         try {
-            DBHandler dbHandler = new DBHandler();
-        	
-            conn = dbHandler.getConnectionCubeSeoul(); //HOME 서울DB 조회
+//            DBHandler dbHandler = new DBHandler();
+//            conn = dbHandler.getConnectionCubeSeoul(); //HOME 서울DB 조회
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
@@ -173,9 +170,9 @@ public class SMSContentInfo {
 //            System.out.println("============================================");
             
             while(rs.next()){
-            	result = rs.getString(1); //1부터 시작
-                System.out.println(result);
+            	result += rs.getString(1); //1부터 시작
             }
+            System.out.println(result);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -185,8 +182,8 @@ public class SMSContentInfo {
             try{
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
-                if ( conn != null ){conn.close(); }
-                System.out.println("DB 연결을 종료하였습니다.");
+//                if ( conn != null ){conn.close(); }
+                System.out.println("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -198,7 +195,7 @@ public class SMSContentInfo {
 	
 	//HOME HS_30분 수신인용(이범영)
 	//HOME -> 서울DB 접속
-	public String staticHomeHS30() {
+	public String staticHomeHS30(Connection conn) {
 		
 		String result = "", sql = "";
 		
@@ -210,14 +207,13 @@ public class SMSContentInfo {
 			sql = contentSQL.sql_HS_30_NOT_Monday;
 		}
 		
-		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+//		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
         PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
         ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
         
         try {
-            DBHandler dbHandler = new DBHandler();
-        	
-            conn = dbHandler.getConnectionCubeSeoul(); //HOME 서울DB 조회
+//            DBHandler dbHandler = new DBHandler();
+//            conn = dbHandler.getConnectionCubeSeoul(); //HOME 서울DB 조회
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
@@ -237,8 +233,8 @@ public class SMSContentInfo {
             try{
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
-                if ( conn != null ){conn.close(); }
-                System.out.println("DB 연결을 종료하였습니다.");
+//                if ( conn != null ){conn.close(); }
+                System.out.println("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -250,21 +246,20 @@ public class SMSContentInfo {
 	
 	//모바일 응대율
 	//모바일 -> 부산DB 접속
-	public String staticMobilePM() {
+	public String staticMobilePM(Connection conn) {
 		
 		String result = "", sql = "";
 		
 		SMSContentSQL contentSQL = new SMSContentSQL();
 		sql = contentSQL.sql_PM_PM;
 		
-		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+//		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
         PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
         ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
         
         try {
-            DBHandler dbHandler = new DBHandler();
-        	
-            conn = dbHandler.getConnectionCubePusan(); //모바일 부산DB 조회
+//            DBHandler dbHandler = new DBHandler();
+//            conn = dbHandler.getConnectionCubePusan(); //모바일 부산DB 조회
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
@@ -272,9 +267,9 @@ public class SMSContentInfo {
 //            System.out.println("============================================");
             
             while(rs.next()){
-            	result = rs.getString(1); //1부터 시작
-                System.out.println(result);
+            	result += rs.getString(1); //1부터 시작
             }
+            System.out.println(result);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -284,8 +279,8 @@ public class SMSContentInfo {
             try{
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
-                if ( conn != null ){conn.close(); }
-                System.out.println("DB 연결을 종료하였습니다.");
+//                if ( conn != null ){conn.close(); }
+                System.out.println("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -296,21 +291,20 @@ public class SMSContentInfo {
 	
 	//모바일 대리점 호전환(ARS에서)
 	//모바일 -> 부산DB 접속
-	public String staticMobilePMAgency() {
+	public String staticMobilePMAgency(Connection conn) {
 		
 		String result = "", sql = "";
 		
 		SMSContentSQL contentSQL = new SMSContentSQL();
 		sql = contentSQL.sql_PM_PM_AGENCY;
 		
-		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+//		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
         PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
         ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
         
         try {
-            DBHandler dbHandler = new DBHandler();
-        	
-            conn = dbHandler.getConnectionCubePusan(); //모바일 부산DB 조회
+//            DBHandler dbHandler = new DBHandler();
+//            conn = dbHandler.getConnectionCubePusan(); //모바일 부산DB 조회
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
@@ -318,9 +312,9 @@ public class SMSContentInfo {
 //            System.out.println("============================================");
             
             while(rs.next()){
-            	result = rs.getString(1); //1부터 시작
-                System.out.println(result);
+            	result += rs.getString(1); //1부터 시작
             }
+            System.out.println(result);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -330,8 +324,8 @@ public class SMSContentInfo {
             try{
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
-                if ( conn != null ){conn.close(); }
-                System.out.println("DB 연결을 종료하였습니다.");
+//                if ( conn != null ){conn.close(); }
+                System.out.println("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -343,14 +337,14 @@ public class SMSContentInfo {
 	
 	//HOME 응대율
 	//HOME -> 서울DB 접속
-	public String staticHomeHS() {
+	public String staticHomeHS(Connection conn) {
 		
 		String result = "", sql = "";
 		
 		SMSContentSQL contentSQL = new SMSContentSQL();
 		sql = contentSQL.sql_PM_HS;
 		
-		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+		//Connection conn = null; // DB연결된 상태(세션)을 담은 객체
         PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
         ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
         
@@ -365,9 +359,9 @@ public class SMSContentInfo {
 //            System.out.println("============================================");
             
             while(rs.next()){
-            	result = rs.getString(1); //1부터 시작
-                System.out.println(result);
+            	result += rs.getString(1); //1부터 시작
             }
+            System.out.println(result);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -377,8 +371,8 @@ public class SMSContentInfo {
             try{
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
-                if ( conn != null ){conn.close(); }
-                System.out.println("DB 연결을 종료하였습니다.");
+                //if ( conn != null ){conn.close(); }
+                System.out.println("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
