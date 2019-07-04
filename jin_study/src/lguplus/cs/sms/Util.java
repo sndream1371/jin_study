@@ -4,14 +4,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Util {
+	
+	Logger log = LoggerFactory.getLogger(Util.class);
 
     public String toDayYYYYMMDD(){
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c1 = Calendar.getInstance();
         String strToday = sdf.format(c1.getTime());
-        System.out.println("Today=" + strToday);
+        log.info("Today=" + strToday);
 
         return strToday;
     }
@@ -33,7 +38,7 @@ public class Util {
                               // 1    2     3    4     5    6    7
         final String[] week = { "일", "월", "화", "수", "목", "금", "토" };
 
-        System.out.println("현재 요일: " + week[oCalendar.get(Calendar.DAY_OF_WEEK) - 1] + "요일");
+        log.info("현재 요일: " + week[oCalendar.get(Calendar.DAY_OF_WEEK) - 1] + "요일");
         
         String weekName = week[oCalendar.get(Calendar.DAY_OF_WEEK) - 1];
         

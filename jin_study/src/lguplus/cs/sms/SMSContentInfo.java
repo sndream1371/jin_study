@@ -5,7 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SMSContentInfo {
+	
+	Logger log = LoggerFactory.getLogger(SMSContentInfo.class);
 
 	Util util = new Util();
 	
@@ -29,8 +34,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("공휴일 조회...");
-            System.out.println("============================================");
+            log.info("공휴일 조회...");
+            log.info("============================================");
             
             while(rs.next()){
                 cnt = rs.getBoolean(1); //1부터 시작
@@ -46,7 +51,7 @@ public class SMSContentInfo {
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
                 if ( conn != null ){conn.close(); }
-                System.out.println("DB 연결을 종료하였습니다.");
+                log.info("DB 연결을 종료하였습니다.");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -73,8 +78,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-//            System.out.println("HOME BS send content");
-//            System.out.println("============================================");
+//            log.info("HOME BS send content");
+//            log.info("============================================");
             
             while(rs.next()){
             	result += rs.getString(1); //1부터 시작
@@ -90,7 +95,7 @@ public class SMSContentInfo {
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
                 //if ( conn != null ){conn.close(); }
-                System.out.println("prepareStatement 정보 반납 하였습니다.");
+                log.info("prepareStatement 정보 반납 하였습니다.");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -120,8 +125,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-//            System.out.println("Mobile TRN send content");
-//            System.out.println("============================================");
+//            log.info("Mobile TRN send content");
+//            log.info("============================================");
             
             while(rs.next()){
             	result += rs.getString(1); //1부터 시작
@@ -137,7 +142,7 @@ public class SMSContentInfo {
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
 //                if ( conn != null ){conn.close(); }
-                System.out.println("PreparedStatement 자원 반납");
+                log.info("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -166,8 +171,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-//            System.out.println("U+SHOP send content");
-//            System.out.println("============================================");
+//            log.info("U+SHOP send content");
+//            log.info("============================================");
             
             while(rs.next()){
             	result += rs.getString(1); //1부터 시작
@@ -183,7 +188,7 @@ public class SMSContentInfo {
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
 //                if ( conn != null ){conn.close(); }
-                System.out.println("PreparedStatement 자원 반납");
+                log.info("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -217,8 +222,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-            System.out.println("HS_30 send content");
-            System.out.println("============================================");
+            log.info("HS_30 send content");
+            log.info("============================================");
             
             while(rs.next()){
             	result = rs.getString(1); //1부터 시작
@@ -234,7 +239,7 @@ public class SMSContentInfo {
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
 //                if ( conn != null ){conn.close(); }
-                System.out.println("PreparedStatement 자원 반납");
+                log.info("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -263,8 +268,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-//            System.out.println("Mobile PM send content");
-//            System.out.println("============================================");
+//            log.info("Mobile PM send content");
+//            log.info("============================================");
             
             while(rs.next()){
             	result += rs.getString(1); //1부터 시작
@@ -280,7 +285,7 @@ public class SMSContentInfo {
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
 //                if ( conn != null ){conn.close(); }
-                System.out.println("PreparedStatement 자원 반납");
+                log.info("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -308,8 +313,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-//            System.out.println("Mobile PM Agency send content");
-//            System.out.println("============================================");
+//            log.info("Mobile PM Agency send content");
+//            log.info("============================================");
             
             while(rs.next()){
             	result += rs.getString(1); //1부터 시작
@@ -325,7 +330,7 @@ public class SMSContentInfo {
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
 //                if ( conn != null ){conn.close(); }
-                System.out.println("PreparedStatement 자원 반납");
+                log.info("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -355,8 +360,8 @@ public class SMSContentInfo {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             
-//            System.out.println("HS send content");
-//            System.out.println("============================================");
+//            log.info("HS send content");
+//            log.info("============================================");
             
             while(rs.next()){
             	result += rs.getString(1); //1부터 시작
@@ -372,7 +377,7 @@ public class SMSContentInfo {
                 if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
                 //if ( conn != null ){conn.close(); }
-                System.out.println("PreparedStatement 자원 반납");
+                log.info("PreparedStatement 자원 반납");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }

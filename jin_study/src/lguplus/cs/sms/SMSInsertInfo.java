@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SMSInsertInfo {
 
+	Logger log = LoggerFactory.getLogger(SMSInsertInfo.class);
 	
 	/*
 	 * SMS 단문 EAI 전송 테이블에 INSERT 
@@ -33,7 +37,7 @@ public class SMSInsertInfo {
             pstm.setString(3, replyNumber);
             int eu = pstm.executeUpdate();
             
-            System.out.println("SMS Insert into table result : "+ eu);
+            log.info("SMS Insert into table result : "+ eu);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -44,7 +48,7 @@ public class SMSInsertInfo {
                 //if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
 //                if ( conn != null ){conn.close(); }
-                System.out.println("PreparedStatement 정보를 반납했습니다.");
+                log.info("PreparedStatement 정보를 반납했습니다.");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
@@ -81,7 +85,7 @@ public class SMSInsertInfo {
             pstm.setString(3, replyNumber);
             int eu = pstm.executeUpdate();
             
-            System.out.println("MMS Insert into table result : "+ eu);
+            log.info("MMS Insert into table result : "+ eu);
             
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -92,7 +96,7 @@ public class SMSInsertInfo {
                 //if ( rs != null ){rs.close();}   
                 if ( pstm != null ){pstm.close();}   
 //                if ( conn != null ){conn.close(); }
-                System.out.println("PreparedStatement 정보를 반납했습니다.");
+                log.info("PreparedStatement 정보를 반납했습니다.");
             }catch(Exception e){
                 throw new RuntimeException(e.getMessage());
             }
