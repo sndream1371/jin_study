@@ -194,7 +194,7 @@ public class SMSContentInfo {
             }
         }
 	
-        result = "응대율(" + new Util().toHH() + ")";
+        result = "응대율(" + new Util().toHH() + ")" + result;
 		return result;
 	}
 	
