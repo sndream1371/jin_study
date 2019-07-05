@@ -373,6 +373,259 @@ public class SMSContentSQL {
 			"     )  "+
 			") ";		
 			
+	
+	//HOME 가입 응대율 월요일
+	String sql_PM_HS_JOIN_MONDAY =
+			"SELECT \'■ 홈 가입\'||chr(10)||\'1.누적: \'||  "+
+			"to_char(Gaib_total_in,\'Fm999,999\')||\'(\'||decode(Gaib_total_in,0,0,round(Gaib_total_an/decode(Gaib_total_in,0,1,Gaib_total_in)*100,1))||\'%)\'||chr(10)||  "+
+			"\'   - 가입I/B_인터넷 \'||to_char(Gib_in,\'Fm999,999\')||Gib_per||chr(10)||  "+
+			"\'   - 가입I/B_TV \'||to_char(Gtv_in,\'Fm999,999\')||Gtv_per||chr(10)||  "+
+			"\'   - 모바일전환_인터넷 \'||to_char(GMin_in,\'Fm999,999\')||GMin_per||chr(10)||  "+
+			"\'   - 모바일전환_TV \'||to_char(GMtv_in,\'Fm999,999\')||GMtv_per||chr(10)||chr(10)  "+
+			"FROM (  "+
+			"     SELECT SUM(Gib_in) Gib_in, SUM(Gib_an) Gib_an, \'(\'||decode(SUM(Gib_in),0,0,round(SUM(Gib_an)/SUM(Gib_in)*100,1))||\'%)\' Gib_per,  "+
+			"            SUM(Gtv_in) Gtv_in, SUM(Gtv_an) Gtv_an, \'(\'||decode(SUM(Gtv_in),0,0,round(SUM(Gtv_an)/SUM(Gtv_in)*100,1))||\'%)\' Gtv_per,  "+
+			"            SUM(GMin_in) GMin_in, SUM(GMin_an) GMin_an, \'(\'||decode(SUM(GMin_in),0,0,round(SUM(GMin_an)/SUM(GMin_in)*100,1))||\'%)\' GMin_per,  "+
+			"            SUM(GMtv_in) GMtv_in, SUM(GMtv_an) GMtv_an, \'(\'||decode(SUM(GMtv_in),0,0,round(SUM(GMtv_an)/SUM(GMtv_in)*100,1))||\'%)\' GMtv_per,  "+
+			"            SUM(Gib_in)+SUM(Gtv_in)+SUM(GMin_in)+SUM(GMtv_in) Gaib_total_in,  "+
+			"            SUM(Gib_an)+SUM(Gtv_an)+SUM(GMin_an)+SUM(GMtv_an) Gaib_total_an  "+
+			"     FROM (  "+
+			"         select nvl(sum(orgenter_count),0) Gib_in, nvl(sum(distribute_count),0) Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (305301,305302,305303,305304,305305)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, nvl(sum(orgenter_count),0) Gtv_in, nvl(sum(distribute_count),0) Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (305321,305322,305323,305324,305325)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, nvl(sum(enter_count),0) GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5924)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, nvl(sum(distribute_count),0) GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5361,5362,5363,5364,5365,5371,5372,5373,5374,5375,5381,5382,5383,5384,5385,  "+
+			"                             5711,5712,5713,5714,5715,5721,5722,5723,5724,5725,5731,5732,5733,5734,5735)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, nvl(sum(enter_count),0) GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5925)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, nvl(sum(distribute_count),0) GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5391,5392,5393,5394,5395)  "+
+			"     )  "+
+			")  "+
+			"UNION ALL  "+
+			"SELECT \'2.\'||to_char(sysdate-1/24,\'hh24\')||\'시대 :\'||  "+
+			"to_char(Gaib_total_in,\'Fm999,999\')||\'(\'||decode(Gaib_total_in,0,0,round(Gaib_total_an/decode(Gaib_total_in,0,1,Gaib_total_in)*100,1))||\'%)\'||chr(10)||  "+
+			"\'   - 가입I/B_인터넷 \'||to_char(Gib_in,\'Fm999,999\')||Gib_per||chr(10)||  "+
+			"\'   - 가입I/B_TV \'||to_char(Gtv_in,\'Fm999,999\')||Gtv_per||chr(10)||  "+
+			"\'   - 모바일전환_인터넷 \'||to_char(GMin_in,\'Fm999,999\')||GMin_per||chr(10)||  "+
+			"\'   - 모바일전환_TV \'||to_char(GMtv_in,\'Fm999,999\')||GMtv_per||chr(10)||chr(10)  "+
+			"FROM (  "+
+			"     SELECT SUM(Gib_in) Gib_in, SUM(Gib_an) Gib_an, \'(\'||decode(SUM(Gib_in),0,0,round(SUM(Gib_an)/SUM(Gib_in)*100,1))||\'%)\' Gib_per,  "+
+			"            SUM(Gtv_in) Gtv_in, SUM(Gtv_an) Gtv_an, \'(\'||decode(SUM(Gtv_in),0,0,round(SUM(Gtv_an)/SUM(Gtv_in)*100,1))||\'%)\' Gtv_per,  "+
+			"            SUM(GMin_in) GMin_in, SUM(GMin_an) GMin_an, \'(\'||decode(SUM(GMin_in),0,0,round(SUM(GMin_an)/SUM(GMin_in)*100,1))||\'%)\' GMin_per,  "+
+			"            SUM(GMtv_in) GMtv_in, SUM(GMtv_an) GMtv_an, \'(\'||decode(SUM(GMtv_in),0,0,round(SUM(GMtv_an)/SUM(GMtv_in)*100,1))||\'%)\' GMtv_per,  "+
+			"            SUM(Gib_in)+SUM(Gtv_in)+SUM(GMin_in)+SUM(GMtv_in) Gaib_total_in,  "+
+			"            SUM(Gib_an)+SUM(Gtv_an)+SUM(GMin_an)+SUM(GMtv_an) Gaib_total_an  "+
+			"     FROM (  "+
+			"         select nvl(sum(orgenter_count),0) Gib_in, nvl(sum(distribute_count),0) Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (305301,305302,305303,305304,305305)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, nvl(sum(orgenter_count),0) Gtv_in, nvl(sum(distribute_count),0) Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (305321,305322,305323,305324,305325)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, nvl(sum(enter_count),0) GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5924)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, nvl(sum(distribute_count),0) GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5361,5362,5363,5364,5365,5371,5372,5373,5374,5375,5381,5382,5383,5384,5385,  "+
+			"                             5711,5712,5713,5714,5715,5721,5722,5723,5724,5725,5731,5732,5733,5734,5735)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, nvl(sum(enter_count),0) GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5925)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, nvl(sum(distribute_count),0) GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5391,5392,5393,5394,5395)  "+
+			"     )  "+
+			") ";	
+	
+	//HOME 가입 응대율 Not 월요일
+	String sql_PM_HS_JOIN_NOT_MONDAY =
+			"SELECT \'■ 홈 가입\'||chr(10)||\'1.누적: \'||  "+
+			"to_char(Gaib_total_in,\'Fm999,999\')||\'(\'||decode(Gaib_total_in,0,0,round(Gaib_total_an/decode(Gaib_total_in,0,1,Gaib_total_in)*100,1))||\'%)\'||chr(10)||  "+
+			"\'   - 가입I/B_인터넷 \'||to_char(Gib_in,\'Fm999,999\')||Gib_per||chr(10)||  "+
+			"\'   - 가입I/B_TV \'||to_char(Gtv_in,\'Fm999,999\')||Gtv_per||chr(10)||  "+
+			"\'   - 모바일전환_인터넷 \'||to_char(GMin_in,\'Fm999,999\')||GMin_per||chr(10)||  "+
+			"\'   - 모바일전환_TV \'||to_char(GMtv_in,\'Fm999,999\')||GMtv_per||chr(10)||chr(10)  "+
+			"FROM (  "+
+			"     SELECT SUM(Gib_in) Gib_in, SUM(Gib_an) Gib_an, \'(\'||decode(SUM(Gib_in),0,0,round(SUM(Gib_an)/SUM(Gib_in)*100,1))||\'%)\' Gib_per,  "+
+			"            SUM(Gtv_in) Gtv_in, SUM(Gtv_an) Gtv_an, \'(\'||decode(SUM(Gtv_in),0,0,round(SUM(Gtv_an)/SUM(Gtv_in)*100,1))||\'%)\' Gtv_per,  "+
+			"            SUM(GMin_in) GMin_in, SUM(GMin_an) GMin_an, \'(\'||decode(SUM(GMin_in),0,0,round(SUM(GMin_an)/SUM(GMin_in)*100,1))||\'%)\' GMin_per,  "+
+			"            SUM(GMtv_in) GMtv_in, SUM(GMtv_an) GMtv_an, \'(\'||decode(SUM(GMtv_in),0,0,round(SUM(GMtv_an)/SUM(GMtv_in)*100,1))||\'%)\' GMtv_per,  "+
+			"            SUM(Gib_in)+SUM(Gtv_in)+SUM(GMin_in)+SUM(GMtv_in) Gaib_total_in,  "+
+			"            SUM(Gib_an)+SUM(Gtv_an)+SUM(GMin_an)+SUM(GMtv_an) Gaib_total_an  "+
+			"     FROM (  "+
+			"         select nvl(sum(orgenter_count),0) Gib_in, nvl(sum(distribute_count),0) Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (305301,305302,305303,305304,305305)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, nvl(sum(orgenter_count),0) Gtv_in, nvl(sum(distribute_count),0) Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (305321,305322,305323,305324,305325)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, nvl(sum(enter_count),0) GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5924)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, nvl(sum(distribute_count),0) GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5361,5362,5363,5364,5365,5371,5372,5373,5374,5375,5381,5382,5383,5384,5385,  "+
+			"                             5711,5712,5713,5714,5715,5721,5722,5723,5724,5725,5731,5732,5733,5734,5735)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, nvl(sum(orgenter_count),0) GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5391,5392,5393,5394,5395)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, nvl(sum(distribute_count),0) GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly >= \'09\'  "+
+			"           and end_hourly <= \'18\'  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5391,5392,5393,5394,5395)  "+
+			"     )  "+
+			")  "+
+			"UNION ALL  "+
+			"SELECT \'2.\'||to_char(sysdate-1/24,\'hh24\')||\'시대 :\'||  "+
+			"to_char(Gaib_total_in,\'Fm999,999\')||\'(\'||decode(Gaib_total_in,0,0,round(Gaib_total_an/decode(Gaib_total_in,0,1,Gaib_total_in)*100,1))||\'%)\'||chr(10)||  "+
+			"\'   - 가입I/B_인터넷 \'||to_char(Gib_in,\'Fm999,999\')||Gib_per||chr(10)||  "+
+			"\'   - 가입I/B_TV \'||to_char(Gtv_in,\'Fm999,999\')||Gtv_per||chr(10)||  "+
+			"\'   - 모바일전환_인터넷 \'||to_char(GMin_in,\'Fm999,999\')||GMin_per||chr(10)||  "+
+			"\'   - 모바일전환_TV \'||to_char(GMtv_in,\'Fm999,999\')||GMtv_per||chr(10)||chr(10)  "+
+			"FROM (  "+
+			"     SELECT SUM(Gib_in) Gib_in, SUM(Gib_an) Gib_an, \'(\'||decode(SUM(Gib_in),0,0,round(SUM(Gib_an)/SUM(Gib_in)*100,1))||\'%)\' Gib_per,  "+
+			"            SUM(Gtv_in) Gtv_in, SUM(Gtv_an) Gtv_an, \'(\'||decode(SUM(Gtv_in),0,0,round(SUM(Gtv_an)/SUM(Gtv_in)*100,1))||\'%)\' Gtv_per,  "+
+			"            SUM(GMin_in) GMin_in, SUM(GMin_an) GMin_an, \'(\'||decode(SUM(GMin_in),0,0,round(SUM(GMin_an)/SUM(GMin_in)*100,1))||\'%)\' GMin_per,  "+
+			"            SUM(GMtv_in) GMtv_in, SUM(GMtv_an) GMtv_an, \'(\'||decode(SUM(GMtv_in),0,0,round(SUM(GMtv_an)/SUM(GMtv_in)*100,1))||\'%)\' GMtv_per,  "+
+			"            SUM(Gib_in)+SUM(Gtv_in)+SUM(GMin_in)+SUM(GMtv_in) Gaib_total_in,  "+
+			"            SUM(Gib_an)+SUM(Gtv_an)+SUM(GMin_an)+SUM(GMtv_an) Gaib_total_an  "+
+			"     FROM (  "+
+			"         select nvl(sum(orgenter_count),0) Gib_in, nvl(sum(distribute_count),0) Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (305301,305302,305303,305304,305305)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, nvl(sum(orgenter_count),0) Gtv_in, nvl(sum(distribute_count),0) Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (305321,305322,305323,305324,305325)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, nvl(sum(enter_count),0) GMin_in, 0 GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5924)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, nvl(sum(distribute_count),0) GMin_an, 0 GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5361,5362,5363,5364,5365,5371,5372,5373,5374,5375,5381,5382,5383,5384,5385,  "+
+			"                             5711,5712,5713,5714,5715,5721,5722,5723,5724,5725,5731,5732,5733,5734,5735)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, nvl(sum(orgenter_count),0) GMtv_in, 0 GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5391,5392,5393,5394,5395)  "+
+			"         union all  "+
+			"         select 0 Gib_in, 0 Gib_an, 0 Gtv_in, 0 Gtv_an, 0 GMin_in, 0 GMin_an, 0 GMtv_in, nvl(sum(distribute_count),0) GMtv_an  "+
+			"         from re_queuestatl_h  "+
+			"         where end_date = to_char(sysdate,\'yyyymmdd\')  "+
+			"           and end_hourly = to_char(sysdate-1/24,\'hh24\')  "+
+			"           and call_type in (11,15)  "+
+			"           and queue_id in (5391,5392,5393,5394,5395)  "+
+			"     )  "+
+			") ";			
+	
 			
 	//BS 응대율
 	String sql_BS =

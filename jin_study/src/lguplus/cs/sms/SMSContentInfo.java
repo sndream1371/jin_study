@@ -194,6 +194,7 @@ public class SMSContentInfo {
             }
         }
 	
+        result = "응대율(" + new Util().toHH() + ")";
 		return result;
 	}
 	
@@ -386,6 +387,53 @@ public class SMSContentInfo {
 		return result;
 	}
 	
+	//HOME 응대율 가입
+	//HOME -> 서울DB 접속
+	public String staticHomeHSJoin(Connection conn) {
+		
+		String result = "", sql = "";
+		
+		SMSContentSQL contentSQL = new SMSContentSQL();
+		Util util = new Util();
+		if( util.checkMonday() ) { //월요일
+			sql = contentSQL.sql_PM_HS_JOIN_MONDAY;
+		}else {
+			sql = contentSQL.sql_PM_HS_JOIN_NOT_MONDAY;
+		}
+		
+		
+        PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+        ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
+        
+        try {
+            DBHandler dbHandler = new DBHandler();
+        	
+            conn = dbHandler.getConnectionCubeSeoul(); //HOME 서울DB 조회
+            pstm = conn.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            
+            while(rs.next()){
+            	result += rs.getString(1); //1부터 시작
+            }
+            System.out.println(result);
+            
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            
+        }finally{
+            // DB 연결을 종료한다.
+            try{
+                if ( rs != null ){rs.close();}   
+                if ( pstm != null ){pstm.close();}   
+                //if ( conn != null ){conn.close(); }
+                log.info("PreparedStatement 자원 반납");
+            }catch(Exception e){
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+	
+		return result;
+	}	
 	
 	
 	

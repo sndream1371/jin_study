@@ -109,7 +109,7 @@ public class SendSMS {
 				switch(sendType) {
 					case "PM": 
 								log.info("PM 통계정보 조회 , SMS전송 테이블 Insert");
-								smsMessage = conInfo.staticMobilePM(connMobile) + conInfo.staticMobilePMAgency(connMobile) + conInfo.staticHomeHS(connHome);
+								smsMessage = conInfo.staticMobilePM(connMobile) + conInfo.staticMobilePMAgency(connMobile) + conInfo.staticHomeHS(connHome) + conInfo.staticHomeHSJoin(connHome);
 								insertInfo.insertMMSTable(senderTelNum, smsMessage, sendType, connHome); //장문 MMS
 								break;
 					
