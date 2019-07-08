@@ -19,17 +19,38 @@ public class SendSMS {
 
 	public static void main(String[] argv) {
 		
-		if( argv.length != 1) { //옵션 갯수를 1개만 받는다.
-			log.info("전송구분 코드 [HS_30, PM, TRN, USHOP, BS]중 하나만 선택하여 넣으세요!");
+		if( argv.length != 2) { //옵션 갯수를 2개 받는다.
+			log.info("1 param :전송구분 코드 [HS_30, PM, TRN, USHOP, BS], 2 param 전송 대상자 (filePath - ex) D:/senderList_manual.txt");
 			return;
 		}
 		
 //		execProcess("BS");  //local for test (로컬에서 테스트)  :전송 구분 코드: HS_30, PM, TRN, USHOP, BS, ALL은 모두 메세지 보낸다.
 		
-		execProcess(argv[0]); //옵션 받은 정보로 호출
+		execProcess(argv[0], argv[1]); //옵션 받은 정보로 호출
 		
 	}
 	
+	//수작업 처리시 사용하는 메소드
+	public static void execProcess(String bizGubun, String filePath) {
+		
+		List<String> senderList = new ArrayList<String>();
+		
+		//주말,공휴일 테이블 조회후 True이면 SMS 전송 X
+//		SMSContentInfo contentInfo = new SMSContentInfo();
+//		if( contentInfo.isHoliday() ) {
+//			log.info("오늘은 공휴일 입니다. SMS 발송이 대상일이 아닙니다.!");
+//			return; //공휴일이면 더이상 프로세스 진행 안함
+//		}
+		
+		FileHandler fileHandler = new FileHandler(filePath); //filePath : D:/sender_list_manual.txt
+		senderList = fileHandler.fileReader();
+		
+		log.info("bizGubun > "+bizGubun);
+		smsUserList(senderList, bizGubun);
+		
+	}
+
+	//스케쥴에서 요청해서 처리하는 메소드
 	public static void execProcess(String bizGubun) {
 		
 		List<String> senderList = new ArrayList<String>();
@@ -51,7 +72,7 @@ public class SendSMS {
 		smsUserList(senderList, bizGubun);
 		
 	}
-
+	
 	//SMS보낼 사용자를 파일에서 읽어온 사용자 정보를 처리한다.
 	public static void smsUserList(List<String> list, String bizGubun) {
 		
