@@ -49,7 +49,7 @@ public class Analysis {
 	 public static String getCustomerId(List<SalesInfo> inputData) {
 		 String result="";
 		 
-		 for(int i=0; i <inputData.size(); i++) {
+		 for(int i=0; i < inputData.size(); i++) {
 			 for(int k=1; k <inputData.size(); k++) {
 				 if(inputData.get(i).getCustom().equals(inputData.get(k).getCustom())) { //고객이름이 같으면
 					 if("1".equals(inputData.get(i).getStatusCode())) { //주문취소:1
@@ -93,10 +93,13 @@ public class Analysis {
 	public static List<String> fileReader() {
         //파일 객체 생성
         Path path = Paths.get("C:/Users/sndre/Documents/TCT_EAD CNS시험/test_data/java_input_tct_2018_4.txt");
+        
         // 캐릭터셋 지정
         Charset cs = StandardCharsets.UTF_8;
+        
         //파일 내용담을 리스트
         List<String> list = new ArrayList<String>();
+        
         try{
             list = Files.readAllLines(path,cs);
         }catch(IOException e){

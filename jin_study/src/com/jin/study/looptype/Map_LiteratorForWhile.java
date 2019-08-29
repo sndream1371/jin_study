@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+
+/*
+ * Map을 이용한 entrySet, keySet 출력
+ * 
+ */
 public class Map_LiteratorForWhile {
 
 	public static void main(String[] args) {

@@ -8,14 +8,15 @@ public class Poliymorphism {
 	}
 
 	public static void main(String[] argv) {
-		Poliymorphism po = new Derived();
+		Derived dri = new Derived();
+		Poliymorphism po = dri;
 		po.f();
 	}
+}
 
-	class Derived extends Poliymorphism {
-		public void f() {
-			System.out.println("sub class");
-		}
+class Derived extends Poliymorphism {
+	public void f() {
+		System.out.println("sub class");
 	}
 }
 

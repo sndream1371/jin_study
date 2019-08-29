@@ -23,6 +23,18 @@ public class IpAddressChange {
 		String binary = "11001011100001001110010110000000";
 		System.out.println(chageDecimal(binary));
 		
+		String str = "DEFAULT.HS";
+		str = str.substring( "DEFAULT.".indexOf(str) + 9 , str.length());
+		
+		System.out.println(str);
+		
+		String strlen=" ";
+		System.out.println("satr length >"+strlen.length());
+		
+		System.out.println( "HS_30".indexOf("HS_30_1") );
+		if( "HS_30_1".indexOf("HS_30") > 0 ) {
+			System.out.println("true");
+		}
 	}
 	
 	public static String chageDecimal(String input) {
